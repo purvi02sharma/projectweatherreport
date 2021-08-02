@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+    <title>Weather App</title>
+    <link rel="icon" href="/image/logo.jpg" type="image/icon type">
+    
+</head>
+<body>
+   
+    <div class="app-main">
+        <div class="searchInputBox">
+            <form action="/" method="post" >
+            <input type="text" name="city" id="input-box" class="input-box" placeholder="City's Name Please..." autocomplete="off" onautocomplete="">
+            </form>
+        </div>
+      <% if(weather !== null && weather!=='' && weather!=="not null"){ %>
+        <div class="weather-body">
+            <div class="location-details">
+                <div class="city" id="city"><%= weatherloc %>,<%= weathercon %></div>
+                <div class="date" id="date">
+                 <script>
+                      let dateArg = new Date();       
+                            let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+                      let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+                      let year = dateArg.getFullYear();
+                      let month = months[dateArg.getMonth()];
+                      let date = dateArg.getDate();
+                      let day = days[dateArg.getDay()];
+                      let dates=`${date} ${month} (${day}), ${year}`;
+                      document.write(dates);
+                 </script>
+                s</div>
+            </div>
+
+            <div class="weather-status">
+
+            <div class="temp" id="temp"><%= weather %>&deg;C</div>
+            <div class="min-max" id="min-max"><%=weathermin%>&deg;C(min)|<%=weathermax%>&deg;C(max)</div>
+            <div class="weather" id="weather"><%=weatherStat%></div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+       
+console.log("HI")
+let bg=document.getElementById("weather")
+        if( bg.innerText== 'Clear') {
+            console.log("hello");
+        document.body.style.backgroundImage = "url('/image/clear.jpg')";
+        
+    } else if( bg.innerText== 'Clouds') {
+             console.log("hello");
+        document.body.style.backgroundImage = "url('/image/cloud.jpg')";
+        
+    } else if(bg.innerText== 'Haze') {
+ console.log("hello");
+        document.body.style.backgroundImage = "url('/image/cloud.jpg')";
+        
+    }     else if(bg.innerText == 'Rain') {
+         console.log("hello");
+        document.body.style.backgroundImage = "url('/image/rain1.jpg')";
+        
+    } else if(bg,innerText == 'Snow') {
+         console.log("hello");
+        document.body.style.backgroundImage = "url('/image/snow.jpg')";
+    
+    } else if(bg.innerText == 'Thunderstorm') {
+     console.log("hello");
+        document.body.style.backgroundImage = "url('/image/thunderstorm.jpg')";
+        
+    } 
+
+            document.querySelector('.weather-body').style.display = "block";
+        
+    </script>
+    <% } %>
+     <% if(error !== null){ %>
+     <div>   
+     <center class="weather">
+        
+          <p><%= error %></p>
+        
+    </center>
+        
+    </div>
+    <% } %>
+
+</body>
+</html>
+
+
