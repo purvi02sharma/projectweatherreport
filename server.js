@@ -49,7 +49,7 @@ request(url, function (err, response, body) {
   });
 })
 
-app.listen(3000, function () {
+app.listen(process.env.PORT, function () {
   console.log('Example app listening on port 3000!')
 })
 
